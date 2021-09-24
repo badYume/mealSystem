@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     public function getMenu()
     {
-        return $this->hasMany(Menu::class,'student_id','user_id')->select('student_id','food_type');
+        return $this->hasMany(Menu::class,'student_id','user_id')->select('food_type');
     }
 
 }

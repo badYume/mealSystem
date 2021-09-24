@@ -24,7 +24,40 @@ class HomeController extends Controller
     public function loadAdminHomeView()
     {
 
-        return view('home_Admin');
+        $users = User::select('f_name','l_name','user_id')->get();
+
+        return view('home_Admin',['users'=>$users]);
+    }
+
+    public function loadAdminHomeViewR(Request $req)
+    {
+
+        if($req->input())
+        {
+            foreach($req->input() as $index => $value)
+            {
+                if($index != '_token')
+                {
+                    $user_id = $index;
+                }
+
+            }
+
+            $menu = User::find($user_id)->getMenu;
+            $cat = Category::select('category_id','cat_name')->get();
+            $meal = Meal::select('meal_id','meal_name','cat_type')->get();
+
+            return view('adminOut',['menu' =>$menu,'cat'=>$cat,'meal'=>$meal]);
+
+
+        }
+        else
+        {
+            return redirect(route('logInPage'));
+        }
+
+
+
     }
 
 

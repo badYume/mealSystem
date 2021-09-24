@@ -29,7 +29,7 @@ Route::POST('/',[HomeController::class,'logInViewR'])->name('logInPageRequest');
 Route::get('/home',[HomeController::class,'loadHomeView'])->name('homePage');
 Route::get('/home',[HomeController::class,'loadAdminHomeView'])->name('homePageA');
 
-Route::POST('/home',[HomeController::class,'loadHomeViewR'])->name('homePageRequest');
+Route::POST('/home/a',[HomeController::class,'loadAdminHomeViewR'])->name('homeAdminPageRequest');
 Route::POST('/home',[HomeController::class,'loadHomeViewR'])->name('homePageRequest');
 
 

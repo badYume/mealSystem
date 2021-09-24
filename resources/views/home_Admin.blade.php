@@ -10,12 +10,27 @@
 
 <body>
 
-<from action = "{{route("homePageA")}}" method = POST>
+<form action="{{route('homeAdminPageRequest')}}" method="post">
 
-    <input type="text" name = "command">
-    <input type="submit" value= "send">
+    @csrf
+    {{--    <label>--}}
+    {{--        <input type="text" name ="command">--}}
+    {{--    </label>--}}
 
-</from>
+    @foreach($users as $index => $value)
+
+        @if($value['f_name'] != 'lunch')
+
+            <input type="submit" name ="{{$value['user_id']}}" value="{{$value['f_name']}} {{$value['l_name']}} " >
+
+        @endif
+
+
+
+    @endforeach
+
+
+</form>
 
 </body>
 
